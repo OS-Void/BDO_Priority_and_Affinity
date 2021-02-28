@@ -1,5 +1,8 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell]
-"ExecutionPolicy"="Bypass"
+"ExecutionPolicy"="Unrestricted"
 "EnableScripts"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\PowerShell\1\ShellIds\ScriptedDiagnostics]
+"ExecutionPolicy"="Unrestricted"
