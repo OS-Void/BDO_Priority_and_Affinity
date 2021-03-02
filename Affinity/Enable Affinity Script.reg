@@ -1,4 +1,4 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\BlackDesertLauncher.exe]
-"Debugger"="powershell -File .\\affinity.ps1"
+"Debugger"="powershell -executionpolicy bypass -File .\\affinity.ps1"
