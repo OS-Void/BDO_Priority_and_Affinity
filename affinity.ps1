@@ -23,7 +23,7 @@ function Check-Admin {
 
 if ((Check-Admin) -eq $false) {
     if (!$elevated) {
-        Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+        Start-Process powershell.exe -WindowStyle Hidden -Verb RunAs -ArgumentList ('-ExecutionPolicy Bypass -NoLogo -NoProfile -File "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
     }
     exit
 }
