@@ -16,12 +16,12 @@ $affinity = 21845
 
 
 # Ask for admin as BDO binaries requires it.
-function Check-Admin {
+function Get-UserAdminState {
     $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
     $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
-if ((Check-Admin) -eq $false) {
+if ((Get-UserAdminState) -eq $false) {
     if (!$elevated) {
         Start-Process powershell.exe -WindowStyle Hidden -Verb RunAs -ArgumentList ('-ExecutionPolicy Bypass -NoLogo -NoProfile -File "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
     }
@@ -31,14 +31,14 @@ if ((Check-Admin) -eq $false) {
 # cd first into folder instead of accesing the file directly
 # otherwise the PALauncher makes you re-download the game again for some odd-reason.
 $path = Split-Path $script:MyInvocation.MyCommand.Path
-cd $path
+Set-Location $path
 
 # Detect if this is the steam version of BDO
 $arg = @{}
 if(Test-Path -Path ".\steam_api.dll") { $arg["ArgumentList"] = "--steam" }
 
 # Launch BDO's patcher
-$app = Start-Process -NoNewWindow -PassThru -FilePath ".\BlackDesertPatcher32.pae" @arg
+Start-Process -NoNewWindow -PassThru -FilePath ".\BlackDesertPatcher32.pae" @arg
 
 # Attempt to get the patcher's process
 # If not found after 5 seconds just end the script.
