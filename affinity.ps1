@@ -21,6 +21,11 @@ function Get-UserAdminState {
     $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
+#
+function Get-BDOProcess {
+    Get-Process BlackDesertPatcher32.pae -ErrorAction SilentlyContinue
+}
+
 if ((Get-UserAdminState) -eq $false) {
     if (!$elevated) {
         Start-Process powershell.exe -WindowStyle Hidden -Verb RunAs -ArgumentList ('-ExecutionPolicy Bypass -NoLogo -NoProfile -File "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
@@ -43,10 +48,14 @@ Start-Process -NoNewWindow -PassThru -FilePath ".\BlackDesertPatcher32.pae" @arg
 # Attempt to get the patcher's process
 # If not found after 5 seconds just end the script.
 $time = (Get-Date).AddSeconds(5)
+
 do {
-    $status = Get-Process BlackDesertPatcher32.pae -ErrorAction SilentlyContinue
+    start-sleep -Seconds 2
+    $status = Get-BDOProcess
     if($status) {
-        $status.ProcessorAffinity=$affinity
+        $status | ForEach-Object {
+             $_.ProcessorAffinity = $affinity 
+        }
         exit
     }
 } while((!$status) -and (Get-Date) -lt $time)
