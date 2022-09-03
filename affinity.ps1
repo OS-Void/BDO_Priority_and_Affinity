@@ -50,6 +50,7 @@ Start-Process -NoNewWindow -PassThru -FilePath ".\BlackDesertPatcher32.pae" @arg
 $time = (Get-Date).AddSeconds(5)
 
 do {
+    # Wait for child process to start and then set selected CPU affinity
     start-sleep -Seconds 2
     $status = Get-BDOProcess
     if($status) {
