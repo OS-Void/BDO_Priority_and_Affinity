@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\BlackDesertLauncher.exe]
+"Debugger"="WScript.exe _startup.vbs"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\BlackDesert64.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000003
