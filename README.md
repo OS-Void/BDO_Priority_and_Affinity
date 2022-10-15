@@ -1,6 +1,7 @@
 # BDOAffinity
 
 Simple workaround for the new EAC affinity block without third-party software.
+(It also raises BDO's priority to High for better game performance)
 
 How to use:
 
