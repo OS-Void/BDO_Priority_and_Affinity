@@ -1,18 +1,44 @@
 # User settings
 
-# Affinity: Starting from CPU0 to the Max (Right to Left), 1 is Enabled and 0 is Disabled.
-# Use the link below to get the Decimal value for your own affinity (e.g: 0101 gives the decimal value of "5", which allows only CPU0 and CPU 2 to be enabled.
-# 0101 = Cpu 3=0, Cpu 2=1, Cpu 1=0, Cpu 0=1   (CPU0 is the first value on the right side)
-
-# https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html
-
+# Change this value depending on your machine
 $affinity = 21845
 
 
 
+# You can check how many processors you have by going to
+# Task Manager > Performance > CPU > "Logical Processors" near the bottom right.
+
+# You want to disable every other CPU, if your "Logical Processors" says its 8,
+# your value would be: 01010101 (CPU0 (1 enabled) being the first value to the right, and CPU7 (0 disabled) being the last value to the left)
+
+# Use the link below to convert that value from Binary to Decimal for your own affinity,
+# for the example above the result would be 85.
+# https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html
 
 
-### DONT EDIT BELOW THIS ###
+# References:
+
+# 1 CPU Enabled = 1
+# 2 CPU Enabled = 5
+# 3 CPU Enabled = 21
+# 4 CPU Enabled = 85
+# 5 CPU Enabled = 341
+# 6 CPU Enabled = 1365
+# 7 CPU Enabled = 5461
+# 8 CPU Enabled = 21845
+
+
+
+
+
+
+
+
+
+
+
+
+### DONT EDIT ANYTHING BELOW THIS ###
 
 # Ask for admin as BDO binaries requires it.
 function Get-UserAdminState {
