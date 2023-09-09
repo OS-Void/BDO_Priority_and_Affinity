@@ -1,4 +1,4 @@
-# BDO Affinity & Priority tweaks
+# BDO Priority & Affinity tweaks
 
 Simple workaround for the new EAC priority/affinity block without third-party software.
 
