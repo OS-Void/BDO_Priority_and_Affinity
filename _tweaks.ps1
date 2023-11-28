@@ -42,7 +42,7 @@ $processName = "BlackDesertPatcher32.exe"
 
 # Check if this is the steam version of BDO
 $arg = @{}
-if (Test-Path -Path ".\steam_api.dll") { $arg["ArgumentList"] = "--steam" }
+if (Test-Path -Path ".\steam_appid.txt") { $arg["ArgumentList"] = "--steam" }
 
 # Start the process and set its priority and affinity
 $process = Start-Process -FilePath ".\$processName" @arg -PassThru -NoNewWindow
