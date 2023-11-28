@@ -46,5 +46,10 @@ if (Test-Path -Path ".\steam_appid.txt") { $arg["ArgumentList"] = "--steam" }
 
 # Start the process and set its priority and affinity
 $process = Start-Process -FilePath ".\$processName" @arg -PassThru -NoNewWindow
-$process.PriorityClass = $priority
-$process.ProcessorAffinity = $affinity
+Start-Sleep 2
+
+Get-Process BlackDesertPatcher32 | ForEach-Object {
+    $_.PriorityClass = $priority
+    $_.ProcessorAffinity = $affinity
+}
+
